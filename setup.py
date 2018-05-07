@@ -20,7 +20,7 @@ setup(
         'pyhap.accessories.AM2302',
     ],
     install_requires=[
-        'HAP-python'
+        'HAP-python',
         'pigpio',
     ],
 )
