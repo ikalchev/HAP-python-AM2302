@@ -35,8 +35,8 @@ class AM2302(AsyncAccessory):
 
     @AsyncAccessory.run_at_interval(60)
     async def run(self):
-        await self.event_loop.run_in_executor(executor=None,
-                                              func=self.sensor.trigger)
+        await self.driver.loop.run_in_executor(executor=None,
+                                               func=self.sensor.trigger)
         await asyncio.sleep(0.2)
         t = self.sensor.temperature()
         h = self.sensor.humidity()
