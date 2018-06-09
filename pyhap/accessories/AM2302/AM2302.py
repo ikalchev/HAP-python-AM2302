@@ -7,13 +7,13 @@ import asyncio
 
 import pigpio
 
-from pyhap.accessory import AsyncAccessory
+from pyhap.accessory import Accessory
 from pyhap.const import CATEGORY_SENSOR
 
 from .sensor import sensor
 
 
-class AM2302(AsyncAccessory):
+class AM2302(Accessory):
     """
     Accessory for the AM2302 temperature and humidity sensor.
     """
@@ -33,7 +33,7 @@ class AM2302(AsyncAccessory):
 
         self.sensor = sensor(pigpio.pi(), pin)
 
-    @AsyncAccessory.run_at_interval(60)
+    @Accessory.run_at_interval(60)
     async def run(self):
         await self.driver.loop.run_in_executor(executor=None,
                                                func=self.sensor.trigger)
